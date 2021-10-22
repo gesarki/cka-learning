@@ -1,6 +1,6 @@
 # CKA Exam Study Schedule
 
-Based on CKA Udemy course.
+Based on CKA Udemy course https://www.udemy.com/course/certified-kubernetes-administrator-with-practice-tests/.
 
 
 Day | Sub-Section | Time |
