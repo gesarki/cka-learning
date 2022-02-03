@@ -1,0 +1,26 @@
+2 kinds of ships:
+- "cargo ships" == worker nodes
+    - have containers == running apps
+    - each one has "captain" == kubelet
+        - agent that runs on each node on the cluster,
+        - listens to instructions from the kube-apiserver and deplys or destroys containers as required
+        - kubeapiserver periodically fetches status reports from the kubelets to monitor the status of nodes and the containers on them
+    - container runtime engine: 
+        - eg: Docker
+        - must be installed on all the nodes, including master node
+    - kube-proxy (on each node)
+        - allows diff nodes and the containers on them to comm with eachother, e.g. backend app on one node can talk to db on another
+- "control ships" == master node
+    - manage the loading of containers onto the worker nodes
+    - done using "control plane components"
+        - etcd cluster:
+            - key-value store
+            - maintain information about the diff ships, what container is on each ship, when was it loaded, etc
+        - "crane" == scheduler: puts containers on different ships, based on container's resource requirements, worker's capacity, any other constraints s.a. taints + tolerations, node affinity pools, etc.
+        - controller-manager
+            - node controller
+            - replication controller
+        - all^ managed by kube-apiserver, allows them to communicate
+            - exposes k8s api that allows external users to perform mgt operations on the cluster
+            - also lets diff components of master node comm with eachother
+

@@ -63,3 +63,12 @@ Day | Sub-Section | Time |
 - [ ] Troubleshoot application failure
 - [ ] Troubleshoot cluster component failure
 - [ ] Troubleshoot networking
+
+---
+
+vim config in `.vimrc`:
+```
+set expandtab
+set shiftwidth=2
+set tabstop=2
+```

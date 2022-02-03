@@ -1,0 +1,24 @@
+apiVersion: apps/v1          # different than ReplicationController
+kind: ReplicaSet
+metadata:
+  name: myapp-replicaset
+  labels:
+    app: myapp
+    type: front-end
+spec:
+  template:
+  
+    metadata:                #    
+      name: nginx            #        
+      labels:                #    
+         app: myapp          #        
+         type: front-end     #  } Copy-paste from pod definition yaml, excluding apiVersion and kind               
+    spec:                    # 
+      containers:            #        
+      - name: nginx          #        
+        image: nginx         #            
+
+  replicas: 3                # same as ReplicationController
+  selector:
+    matchLabels:
+      type: front-end        # allows you to control replicas of pods that aren't defined in this yaml
