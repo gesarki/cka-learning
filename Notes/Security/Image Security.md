@@ -22,5 +22,6 @@ spec:
   containers:
   - image: private-registry.io/apps/internal-app
     name: nginx
-  imagePullSecrets: regcred      # specify secret to use to authenticate to docker registry
+  imagePullSecrets:
+    name: regcred      # specify secret to use to authenticate to docker registry
 ```
